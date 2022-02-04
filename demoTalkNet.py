@@ -355,10 +355,7 @@ def evaluate_network(files, args):
                         .to(device)
                     )
 
-                    embedA = s.model.forward_audio_frontend(inputA)
-                    embedV = s.model.forward_visual_frontend(inputV)
-                    embedA, embedV = s.model.forward_cross_attention(embedA, embedV)
-                    out = s.model.forward_audio_visual_backend(embedA, embedV)
+                    out = s.model.forward((inputA, inputV))
                     score = s.lossAV.forward(out, labels=None)
                     scores.extend(score)
             allScore.append(scores)

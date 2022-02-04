@@ -22,7 +22,7 @@ class S3FD():
         self.device = device
 
         # print('[S3FD] loading with', self.device)
-        self.net = S3FDNet(device=self.device).to(self.device)
+        self.net = S3FDNet().to(self.device)
         PATH = os.path.join(os.getcwd(), PATH_WEIGHT)
         state_dict = torch.load(PATH, map_location=self.device)
         self.net.load_state_dict(state_dict)

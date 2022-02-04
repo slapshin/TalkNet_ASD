@@ -2,6 +2,8 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 import torch.nn.init as init
+
+from utils.runtime import device_code
 from .box_utils import Detect, PriorBox
 
 
@@ -26,10 +28,9 @@ class L2Norm(nn.Module):
 
 
 class S3FDNet(nn.Module):
-
-    def __init__(self, device='cuda'):
-        super(S3FDNet, self).__init__()
-        self.device = device
+    def __init__(self):
+        super().__init__()
+        self.device = device_code
 
         self.vgg = nn.ModuleList([
             nn.Conv2d(3, 64, 3, 1, padding=1),

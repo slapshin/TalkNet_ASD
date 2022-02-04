@@ -1,6 +1,6 @@
 import torch
 
-device_code = "gpu" if torch.cuda.is_available() else "cuda"
+device_code = "cuda" if torch.cuda.is_available() else "cpu"
 
 device = torch.device(device_code)
 
